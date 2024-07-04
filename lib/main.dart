@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,14 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Chat App',
-        theme: ThemeData(
-          useMaterial3: false,
-        ),
-        home: Scaffold(
-          floatingActionButton: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
-          appBar: AppBar(title: const Text('Chat')),
-        ));
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
+      title: 'Chat App',
+      theme: ThemeData(
+        useMaterial3: false,
+      ),
+      home: const LoginScreen(),
+    );
   }
 }
