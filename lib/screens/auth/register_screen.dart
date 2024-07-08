@@ -1,25 +1,35 @@
-import 'package:chat_app/screens/auth/forget_screen.dart';
-import 'package:chat_app/screens/auth/register_screen.dart';
+import 'package:chat_app/screens/auth/login_screen.dart';
 import 'package:chat_app/utils/colors.dart';
 import 'package:chat_app/widget/custom_button.dart';
 import 'package:chat_app/widget/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (route) => false);
+              },
+              icon: const Icon(Icons.login_outlined)),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -45,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 4,
               ),
               Text(
-                "Chat App New Flutter",
+                "register to continue",
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
@@ -63,54 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 10,
               ),
-              CustomTextFormField(
-                lable: "Password",
-                icon: Icons.password,
-                controller: _passwordController,
-                isPass: true,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                children: [
-                  const Spacer(),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ForgetScreen()));
-                      },
-                      child: const Text("Forget Password?"))
-                ],
-              ),
               const SizedBox(
                 height: 2,
               ),
               const CustomElevatedButton(),
               const SizedBox(
                 height: 20,
-              ),
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegisterScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                    shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.all(20)),
-                child: Center(
-                  child: Text(
-                    "Create Account".toUpperCase(),
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onBackground),
-                  ),
-                ),
               ),
             ],
           ),

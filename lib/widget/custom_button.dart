@@ -17,6 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
           backgroundColor: kPrimaryColor,
           padding: const EdgeInsets.all(20)),
       child: Center(
+        
         child: Text(
           "login".toUpperCase(),
           style: const TextStyle(color: Colors.black45),
